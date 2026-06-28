@@ -1,0 +1,23 @@
+name: pdf_tools
+description: تطبيق تعديل PDF شخصي
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  file_picker: ^6.1.1
+  syncfusion_flutter_pdf: ^24.1.41
+  pdf_render: ^1.4.5
+  path_provider: ^2.1.2
+  uuid: ^4.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
