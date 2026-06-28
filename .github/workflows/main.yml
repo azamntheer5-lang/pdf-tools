@@ -15,16 +15,23 @@ jobs:
         with:
           flutter-version: '3.13.0'
 
-      # إنشاء هيكل Android صحيح (يحافظ على ملفاتنا)
-      - name: Fix Android project structure
-        run: flutter create . --force
+      # حذف مجلد android الناقص
+      - name: Remove incomplete android folder
+        run: rm -rf android
 
-      - name: Get dependencies
+      # إنشاء مشروع Android سليم (يحافظ على ملفاتنا لأنه لا يوجد مجلد android)
+      - name: Create new Android project
+        run: flutter create .
+
+      # تثبيت الحزم
+      - name: Get packages
         run: flutter pub get
 
+      # بناء التطبيق
       - name: Build APK
         run: flutter build apk --debug
 
+      # رفع ملف APK للتحميل
       - uses: actions/upload-artifact@v4
         with:
           name: app-debug
