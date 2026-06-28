@@ -15,23 +15,20 @@ jobs:
         with:
           flutter-version: '3.13.0'
 
-      # حذف مجلد android الناقص
+      # حذف مجلد android غير المكتمل (إن وُجد)
       - name: Remove incomplete android folder
         run: rm -rf android
 
-      # إنشاء مشروع Android سليم (يحافظ على ملفاتنا لأنه لا يوجد مجلد android)
-      - name: Create new Android project
-        run: flutter create .
+      # إنشاء مشروع Android سليم باسم حزمة صالح
+      - name: Create new Android project with valid package name
+        run: flutter create . --project-name pdf_tools
 
-      # تثبيت الحزم
       - name: Get packages
         run: flutter pub get
 
-      # بناء التطبيق
       - name: Build APK
         run: flutter build apk --debug
 
-      # رفع ملف APK للتحميل
       - uses: actions/upload-artifact@v4
         with:
           name: app-debug
